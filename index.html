@@ -44,67 +44,7 @@
     mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 85%);
     -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 85%);
   }
-      <script>
-  (function () {
-    const palette = ["#ff5c6e", "#d62839", "#8f1122", "#ffc9cf"];
-
-    let lastX = 0, lastY = 0, lastTime = 0;
-    const MIN_DIST = 12;
-    const MIN_INTERVAL = 28;
-
-    function spawnDot(x, y) {
-      const now = performance.now();
-      const dx = x - lastX;
-      const dy = y - lastY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < MIN_DIST || now - lastTime < MIN_INTERVAL) return;
-
-      lastX = x;
-      lastY = y;
-      lastTime = now;
-
-      const dot = document.createElement("span");
-      dot.className = "trail-dot";
-
-      const color = palette[Math.floor(Math.random() * palette.length)];
-      const size = 8 + Math.random() * 8;
-
-      dot.style.left = x + "px";
-      dot.style.top = y + "px";
-      dot.style.width = size + "px";
-      dot.style.height = size + "px";
-      dot.style.background = color;
-      dot.style.boxShadow = `0 0 12px ${color}, 0 0 24px ${color}66`;
-
-      document.body.appendChild(dot);
-      setTimeout(() => dot.remove(), 3000);
-    }
-
-    // Мышь
-    document.addEventListener("mousemove", (e) => {
-      spawnDot(e.clientX, e.clientY);
-    });
-
-    // Палец на телефоне / планшете
-    document.addEventListener("touchmove", (e) => {
-      // не даём странице скроллиться, пока рисуем шлейф
-      // (если хотите оставить скролл — уберите эту строку)
-      e.preventDefault();
-
-      for (const touch of e.touches) {
-        spawnDot(touch.clientX, touch.clientY);
-      }
-    }, { passive: false });
-
-    // Одиночное касание — тоже оставляет точку
-    document.addEventListener("touchstart", (e) => {
-      for (const touch of e.touches) {
-        spawnDot(touch.clientX, touch.clientY);
-      }
-    }, { passive: true });
-  })();
-</script>
+      
 
   /* мягкое свечение позади логотипа */
   .glow {
