@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СангвинийПиксельАрт</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .cover {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    text-align: center;
+    padding: 24px;
+    background:
+      radial-gradient(circle at 50% 35%, #2a0d12 0%, #140508 55%, #080203 100%);
+    font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+    color: #fff;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  /* лёгкая пиксельная сетка на фоне */
+  .cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 85%);
+  }
+
+  /* мягкое свечение позади логотипа */
+  .glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -62%);
+    background: radial-gradient(circle, rgba(214, 40, 57, 0.35) 0%, transparent 65%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .logo {
+    position: relative;
+    width: 190px;
+    height: 150px;
+    animation: float 4.5s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .logo svg { width: 100%; height: 100%; display: block; }
+
+  .title {
+    position: relative;
+    font-size: clamp(30px, 7vw, 72px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #ffffff 0%, #ffc9cf 55%, #d62839 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 24px rgba(214, 40, 57, 0.45));
+  }
+
+  .subtitle {
+    position: relative;
+    max-width: 620px;
+    font-size: clamp(14px, 1.8vw, 19px);
+    line-height: 1.65;
+    color: #e8d3d6;
+  }
+
+  .subtitle b { color: #ff5c6e; }
+
+  .btn {
+    position: relative;
+    margin-top: 10px;
+    padding: 18px 52px;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #d62839 0%, #8f1122 100%);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow:
+      0 0 0 1px rgba(214, 40, 57, 0.5),
+      0 12px 40px rgba(214, 40, 57, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #ff3b52 0%, #b3172c 100%);
+    box-shadow:
+      0 0 0 1px rgba(255, 92, 110, 0.6),
+      0 18px 55px rgba(255, 60, 80, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .btn:active { transform: translateY(-1px); }
+
+  /* пиксельные «искры» на фоне */
+  .spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ff5c6e;
+    opacity: .5;
+    animation: blink 3s ease-in-out infinite;
+  }
+  .spark:nth-child(1) { top: 18%; left: 12%; animation-delay: 0s; }
+  .spark:nth-child(2) { top: 72%; left: 20%; animation-delay: .7s; }
+  .spark:nth-child(3) { top: 25%; left: 84%; animation-delay: 1.4s; }
+  .spark:nth-child(4) { top: 80%; left: 78%; animation-delay: 2.1s; }
+  .spark:nth-child(5) { top: 55%; left: 6%;  animation-delay: 1.1s; }
+  .spark:nth-child(6) { top: 12%; left: 62%; animation-delay: 1.8s; }
+
+  @keyframes blink {
+    0%, 100% { opacity: .15; transform: scale(1); }
+    50%      { opacity: .85; transform: scale(1.4); }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="glow"></div>
+
+  <span class="spark"></span>
+  <span class="spark"></span>
+  <span class="spark"></span>
+  <span class="spark"></span>
+  <span class="spark"></span>
+  <span class="spark"></span>
+
+  <!-- Логотип: красная слеза с белыми крыльями -->
+  <div class="logo">
+    <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-label="Логотип: красная слеза с белыми крыльями">
+      <defs>
+        <linearGradient id="tearGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#ff5c6e"/>
+          <stop offset="55%" stop-color="#d62839"/>
+          <stop offset="100%" stop-color="#7d0e1d"/>
+        </linearGradient>
+        <linearGradient id="wingGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#d6d9e0"/>
+        </linearGradient>
+        <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge>
+            <feMergeNode in="b"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Левое крыло -->
+      <g filter="url(#soft)">
+        <path d="M92 62 C70 40, 44 32, 18 36
+                 C40 48, 52 60, 58 74
+                 C42 70, 28 72, 14 82
+                 C36 84, 52 92, 62 104
+                 C50 104, 36 110, 26 122
+                 C52 120, 74 110, 92 92 Z"
+              fill="url(#wingGrad)" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Правое крыло (зеркало) -->
+      <g filter="url(#soft)" transform="translate(200,0) scale(-1,1)">
+        <path d="M92 62 C70 40, 44 32, 18 36
+                 C40 48, 52 60, 58 74
+                 C42 70, 28 72, 14 82
+                 C36 84, 52 92, 62 104
+                 C50 104, 36 110, 26 122
+                 C52 120, 74 110, 92 92 Z"
+              fill="url(#wingGrad)" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+
+      <!-- Красная слеза (капля) -->
+      <g filter="url(#soft)">
+        <path d="M100 34
+                 C100 34, 128 78, 128 98
+                 C128 116, 115 128, 100 128
+                 C85 128, 72 116, 72 98
+                 C72 78, 100 34, 100 34 Z"
+              fill="url(#tearGrad)" stroke="#ff9aa6" stroke-width="1.5"/>
+        <!-- блик -->
+        <ellipse cx="91" cy="96" rx="7" ry="12" fill="rgba(255,255,255,0.55)"/>
+        <circle cx="90" cy="82" r="4" fill="rgba(255,255,255,0.75)"/>
+      </g>
+    </svg>
+  </div>
+
+  <h1 class="title">СангвинийПиксельАрт</h1>
+
+  <p class="subtitle">
+    Сайт для рисования по пикселям. Создавайте спрайты, персонажей и целые
+    миры — <b>пиксель за пикселем</b>, прямо в браузере.
+  </p>
+
+  <a class="btn" href="/editor">Перейти в редактор</a>
+</div>
+
+</body>
+</html>
